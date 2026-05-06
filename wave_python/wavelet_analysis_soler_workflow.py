@@ -4,10 +4,33 @@ from time import time
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from matplotlib.gridspec import GridSpec
-from afino_code import afino
 import numpy as np
 from waveletFunctions import wave_signif, wavelet
-from gaussian_fit import decompose_components, gaussian, lorentzian, asymmetric_gaussian
+
+def decompose_components(time, popt, model_name):
+    """
+    Given the fitted parameters and model name,
+    return individual component fits for plotting.
+    """
+    if model_name == 'gaussian':
+        func = gaussian
+        n_params = 3
+    elif model_name == 'lorentzian':
+        func = lorentzian
+        n_params = 3
+    elif model_name == 'asymmetric_gaussian':
+        func = asymmetric_gaussian
+        n_params = 4
+    else:
+        raise ValueError(f"Unknown model: {model_name}")
+
+    n_components = len(popt) // n_params
+    fit_components = np.zeros((n_components, len(time)))
+
+    for i in range(n_components):
+        params = popt[i * n_params:(i + 1) * n_params]
+        fit_components[i] = func(time, *params)
+    return fit_components
 
 def analyse_series(string, foldername, 
                    time, fit, counts, slope, model, popt,
