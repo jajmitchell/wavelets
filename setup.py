@@ -7,6 +7,6 @@ setuptools.setup(
     name="wavelets",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/ct6502/wavelets.git",
+    url="https://github.com/wavelets/",
     packages=setuptools.find_packages(),
 )
