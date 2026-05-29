@@ -37,12 +37,18 @@ def analyse_series(string, foldername,
                    afino_status, afino_period,
                    error=None):
     
-    file = string.replace('-', '')
-    base = os.path.dirname(foldername)
-    dir = os.path.join(base, 'save')
-    savedir = os.path.join(base, 'wavelet')
-    # os.makedirs(os.path.expanduser(savedir), exist_ok=True)
-    filepath = os.path.join(dir, 'variables_' + file + '.pkl')
+    if string is not None and foldername is not None:
+        file = string.replace('-', '')
+        base = os.path.dirname(foldername)
+        dir = os.path.join(base, 'save')
+        savedir = os.path.join(base, 'wavelet')
+        # os.makedirs(os.path.expanduser(savedir), exist_ok=True)
+        filepath = os.path.join(dir, 'variables_' + file + '.pkl')
+
+    else:
+        filepath = None
+        savedir = None
+        file = None
 
     # with open(filepath, 'rb') as f:
     #     data = pickle.load(f)
@@ -65,13 +71,15 @@ def analyse_series(string, foldername,
 
     if error:
         wavelet_analysis(filepath, savedir, file,
-                         model, time, fit, counts, slope, popt,
-                         afino_status, afino_period,
-                         stderr=error)
+                        model, time, fit, counts, slope, popt,
+                        afino_status, afino_period,
+                        stderr=error)
     else:
         wavelet_analysis(filepath, savedir, file,
-                         model, time, fit, counts, slope, popt,
-                         afino_status, afino_period)
+                        model, time, fit, counts, slope, popt,
+                        afino_status, afino_period)
+        
+
 
 def wavelet_analysis(filepath, savedir, file, 
                      model_name, time, fit, counts, slope, popt,
