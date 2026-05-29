@@ -32,10 +32,10 @@ def decompose_components(time, popt, model_name):
         fit_components[i] = func(time, *params)
     return fit_components
 
-def analyse_series(string=None, foldername=None, 
+def analyse_series(
                    time, fit, counts, slope, model, popt,
                    afino_status, afino_period,
-                   error=None):
+                   error=None,string=None, foldername=None, ):
     
     if string is not None and foldername is not None:
         file = string.replace('-', '')
