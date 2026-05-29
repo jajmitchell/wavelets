@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from matplotlib.gridspec import GridSpec
 import numpy as np
-from waveletFunctions import wave_signif, wavelet
+from wave_python.waveletFunctions import wave_signif, wavelet
 
 def decompose_components(time, popt, model_name):
     """
@@ -32,7 +32,7 @@ def decompose_components(time, popt, model_name):
         fit_components[i] = func(time, *params)
     return fit_components
 
-def analyse_series(string, foldername, 
+def analyse_series(string=None, foldername=None, 
                    time, fit, counts, slope, model, popt,
                    afino_status, afino_period,
                    error=None):
