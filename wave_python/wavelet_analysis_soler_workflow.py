@@ -6,6 +6,7 @@ import matplotlib.ticker as ticker
 from matplotlib.gridspec import GridSpec
 import numpy as np
 from wave_python.waveletFunctions import wave_signif, wavelet
+from Gaussian.Decomp.gaussian_fit import lorentzian, gaussian, asymmetric_gaussian
 
 def decompose_components(time, popt, model_name):
     """
