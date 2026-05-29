@@ -5,8 +5,9 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="wavelets",
+    version='1.0',
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/wavelets/",
-    packages=setuptools.find_packages(),
+    packages=['wavelets'],
 )
